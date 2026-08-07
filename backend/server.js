@@ -3,7 +3,9 @@ const cors = require("cors");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
+
 const categoryRoutes = require("./routes/categoryRoutes");
+const cartRoutes = require("./routes/cartRoutes");
 
 const app = express();
 
@@ -14,8 +16,9 @@ app.use(express.json());
 // Connect to MongoDB
 connectDB();
 
-// Category routes
+// Routes
 app.use("/api/categories", categoryRoutes);
+app.use("/api/cart", cartRoutes);
 
 // Test route
 app.get("/", (req, res) => {
